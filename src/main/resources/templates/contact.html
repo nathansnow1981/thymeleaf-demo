@@ -4,9 +4,32 @@
 <head th:replace="fragments/site :: head"></head>
 <!--</editor-fold>-->
 <body>
-<!--<editor-fold desc="3.0 - Navigation">-->
-<nav th:replace="fragments/site :: nav"></nav>
-<!--</editor-fold>-->
+    <!--<editor-fold desc="3.0 - Navigation">-->
+    <nav th:replace="fragments/site :: nav"></nav>
+    <!--</editor-fold>-->
+
+    <h1 class="text-center">Contact Us</h1>
+
+    <!--
+    th:action = The mapping (controller method) to post this request to
+    th:object = The object to use... we have passed contactMessage to the page
+    We are using the post method to create a POST request on submit
+    -->
+    <form class="w-50 mx-auto pt-5" th:action="@{/contact}" th:object="${contactMessage}" method="post">
+        <!--
+        th:field = The object (contactMessage) attributes... email and message
+        -->
+        <div class="mb-3">
+            <label for="emailAddress" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="emailAddress" aria-describedby="emailHelp" th:field="*{email}">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="textArea" class="form-label">Message</label>
+            <textarea class="form-control" id="textArea" rows="10" th:field="*{message}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
 </body>
 </html>

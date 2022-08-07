@@ -118,6 +118,13 @@
         return "/about";
     }
    ```
+## 3.0 - Content
+1. Added some dummy content to the `about` page, and a contact form to the `contact` page.
+2. Added a [ContactMessage.java](src/main/java/com/example/thymeleaf/ContactMessage.java) class to receive messages from the contact form
+3. Defined 2 x contact methods in the controller.
+   - The first is declared as `GET` mapping and will be the method called when a user first visits the contact page.
+   - The second is a `POST` mapped method and is called whenever a user submits the contact form.
+
 ## Resources
 ### Standard Expressions
 ```
