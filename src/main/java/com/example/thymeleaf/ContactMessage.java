@@ -17,6 +17,9 @@ public class ContactMessage {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "email", length = 256)
     private String email;
+
+    @Column(name = "message", length = 1024)
     private String message;
 }

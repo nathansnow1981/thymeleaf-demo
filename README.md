@@ -143,6 +143,10 @@
       </tr>
    </table>
    ```
+## 3.2 - Dynamic With Seed Data
+1. Controller methods have been cleaned up, and website title now comes from [AppConfig.java](src/main/java/com/example/thymeleaf/AppConfig.java) (value defined in [application.yml](src/main/resources/application.yml))
+2. **Messages** table on the home page has 2 extra columns at the end of each row for `Edit` and `Delete` buttons (Edit button not yet functional)
+3. [MessageService](src/main/java/com/example/thymeleaf/MessageService.java) contains a few simple crud operations that are used by the controller and AppConfig class.
 
 ## Resources
 ### Standard Expressions

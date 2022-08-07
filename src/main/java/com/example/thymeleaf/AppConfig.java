@@ -23,7 +23,8 @@ public class AppConfig {
     //Seed data
     @PostConstruct
     public void loadSeedData() {
-        messageService.addAllMessages(List.of(
+        //Seed data from https://www.mockaroo.com/
+        var seedData = messageService.addAllMessages(List.of(
                 new ContactMessage(1L, "apellew0@cocolog-nifty.com", "Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh."),
                 new ContactMessage(2L, "ndove1@topsy.com", "Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc."),
                 new ContactMessage(3L, "oclout2@dedecms.com", "Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis."),

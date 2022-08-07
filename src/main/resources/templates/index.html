@@ -9,17 +9,21 @@
     <!--</editor-fold>-->
 
         <!--<editor-fold desc="1.2 - Dynamic Tables">-->
-        <h2 class="ms-3">Messages</h2>
-        <table class="table table-striped table-hover ms-3" style="width: 550px;">
+        <h2 class="w-50 mx-auto text-center mt-5">Messages</h2>
+        <table class="table table-striped table-hover w-75 mx-auto pt-5">
             <tr>
                 <th>ID</th>
                 <th>Email</th>
                 <th>Message</th>
+                <th></th><!-- Edit btn column -->
+                <th></th><!-- Delete btn column -->
             </tr>
             <tr th:each="msg : ${messages}">
                 <td th:text="${msg.id}" ></td>
                 <td th:text="${msg.email}" ></td>
                 <td th:text="${msg.message}" ></td>
+                <td><a class="btn btn-info" th:href="@{/edit/{id}(id=${msg.id})}" >Edit</a></td><!-- Logic not functional yet -->
+                <td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${msg.id})}">Delete</a></td>
             </tr>
         </table>
         <!--</editor-fold>-->

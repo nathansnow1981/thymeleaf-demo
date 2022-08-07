@@ -4,6 +4,7 @@ spring:
 
   application:
     name: THYMELEAF DEMO
+    display-name: Thymeleaf Demo
 
   profiles:
     active: dev
