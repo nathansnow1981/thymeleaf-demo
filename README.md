@@ -18,7 +18,7 @@
         return "/index";
     }
    ```
-## 1.1 Dynamic Lists
+## 1.1 - Dynamic Lists
 1. [index.html](src/main/resources/templates/index.html) shows how we can use `th:each"` to iterate through a list called "items", and then create a new `<li>` element for each list item. Then we set the value of the list item element to the value of that list item.
    ```html
    <ul>
@@ -62,8 +62,19 @@
    ));
    ```
    The index page will now show the following table ![student-table.png](screenshots/student-table.png)
-## Resources
 
+## 2.0 - Fragments
+1. A new [fragments](src/main/resources/templates/fragments) directory holds a new fragment [head](src/main/resources/templates/fragments/head.html). This fragment contains only the `<head>` element content, which now also includes the bootstrap cdn link.
+2. The [index](src/main/resources/templates/index.html) now has its head element replaced with the following syntax, which simply instructs it to replace this head element with the head element that can be found in the `fragments/head` file.
+   ```html
+   <head th:replace="fragments/head"></head>
+   ```
+   When thymeleaf looks at `fragments/head`, it can see that it is a fragment by the `th:fragment="head"` declaration.
+   Running the program now shows the table looking like below:
+   ![bootstrap-students-table.png](screenshots/bootstrap-students-table.png)
+
+
+## Resources
 ### Standard Expressions
 ```
 - ${...} : Variable expressions.
