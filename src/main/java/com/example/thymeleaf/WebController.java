@@ -13,6 +13,7 @@ public class WebController {
     public String index(Model model){
         //Add the website title
         model.addAttribute("siteTitle","Thymeleaf Demo");
+        model.addAttribute("pageTitle", "Home");
 
         //Pass some content to the index page
         model.addAttribute("dynamicContent","This is some dynamic content");
@@ -30,5 +31,19 @@ public class WebController {
 
         //Return index.html (No need to specify the ".html" part)
         return "/index";
+    }
+
+    @GetMapping("/about")
+    public String about(Model model){
+        model.addAttribute("siteTitle","Thymeleaf Demo");
+        model.addAttribute("pageTitle", "About");
+        return "/about";
+    }
+
+    @GetMapping("/contact")
+    public String contact(Model model){
+        model.addAttribute("siteTitle","Thymeleaf Demo");
+        model.addAttribute("pageTitle", "Contact");
+        return "/contact";
     }
 }

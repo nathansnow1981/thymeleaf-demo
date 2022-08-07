@@ -88,7 +88,36 @@
    ```html
    <footer th:replace="fragments/site :: footer"></footer>
    ```
-
+## 2.2 - Navigation Fragment
+1. A simple `nav` fragment has been added to [site.html](src/main/resources/templates/fragments/site.html) with conditional operators to dynamically change which link is active  
+   ```html
+   <nav th:fragment="nav" class="nav justify-content-center">
+        <!-- Conditional operator to determine the active page -->
+        <a th:class="${#strings.equalsIgnoreCase(pageTitle, 'Home')? 'nav-link active' : 'nav-link'}" th:href="@{/}">Home</a>
+        <a th:class="${#strings.equalsIgnoreCase(pageTitle, 'About')? 'nav-link active' : 'nav-link'}" th:href="@{about}">About</a>
+        <a th:class="${#strings.equalsIgnoreCase(pageTitle, 'Contact')? 'nav-link active' : 'nav-link'}" th:href="@{contact}">Contact</a>
+    </nav>
+   ```
+2. The [about](src/main/resources/templates/about.html) and [contact](src/main/resources/templates/contact.html) pages were then created, at this stage they only import the `head` and `nav` fragments and are otherwise blank pages.
+   ```html
+   <!-- Simple content of the about and contact html pages -->
+   <!DOCTYPE html>
+   <html lang="en" xmlns:th="http://www.thymeleaf.org">
+       <head th:replace="fragments/site :: head"></head>
+       <body>
+           <nav th:replace="fragments/site :: nav"></nav>
+       </body>
+   </html>
+   ```
+3. The [WebController](src/main/java/com/example/thymeleaf/WebController.java) must be updated to contain methods for the new `about.html` and `contact.html` pages, and another attribute has been added to the model to enable the active nav link operators to identify the page.
+   ```java 
+   @GetMapping("/about")
+    public String about(Model model){
+        model.addAttribute("siteTitle","Thymeleaf Demo");
+        model.addAttribute("pageTitle", "About");
+        return "/about";
+    }
+   ```
 ## Resources
 ### Standard Expressions
 ```

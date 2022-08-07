@@ -4,6 +4,10 @@
     <head th:replace="fragments/site :: head"></head>
     <!--</editor-fold>-->
     <body>
+    <!--<editor-fold desc="3.0 - Navigation">-->
+    <nav th:replace="fragments/site :: nav"></nav>
+    <!--</editor-fold>-->
+
         <!--<editor-fold desc="1.0 - Dynamic Content">-->
         <p>This is a normal static content</p>
         <p th:text="${dynamicContent}">We don't need any text in here</p><!-- Inject content from the model -->
