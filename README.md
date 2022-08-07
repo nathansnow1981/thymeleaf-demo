@@ -125,6 +125,25 @@
    - The first is declared as `GET` mapping and will be the method called when a user first visits the contact page.
    - The second is a `POST` mapped method and is called whenever a user submits the contact form.
 
+## 3.1 - Dynamic Live Data
+1. Added a [repository](src/main/java/com/example/thymeleaf/ContactMessageRepository.java) and [service](src/main/java/com/example/thymeleaf/MessageService.java) to manage the [ContactMessage](src/main/java/com/example/thymeleaf/ContactMessage.java)'s.
+2. Removed the example info from the home page and modified the students table to show all the current contact messages (submitting the contact form will add the message to the table on the home page).
+   ```html
+   <h2 class="ms-3">Messages</h2>
+   <table class="table table-striped table-hover ms-3" style="width: 550px;">
+      <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Message</th>
+      </tr>
+      <tr th:each="msg : ${messages}">
+          <td th:text="${msg.id}" ></td>
+          <td th:text="${msg.email}" ></td>
+          <td th:text="${msg.message}" ></td>
+      </tr>
+   </table>
+   ```
+
 ## Resources
 ### Standard Expressions
 ```
