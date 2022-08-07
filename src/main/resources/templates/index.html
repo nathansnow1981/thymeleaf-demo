@@ -2,10 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${siteTitle}">Title</title>
+    <title th:text="${siteTitle}">Title</title><!-- Inject title from the model -->
 </head>
+
 <body>
     <p>This is a normal static content</p>
-    <p th:text="${dynamicContent}">We don't need any text in here</p>
+    <p th:text="${dynamicContent}">We don't need any text in here</p><!-- Inject content from the model -->
 </body>
+
 </html>
