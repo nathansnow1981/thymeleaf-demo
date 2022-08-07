@@ -80,14 +80,14 @@
    - The `head` fragment.
    - The `footer` fragment 
 2. [index.html]() has been altered to remove the call to `head.html` and replace it with the following call to the `head` fragment within the `site.html` fragment _(think of it like a method call within a class)_
-```html
-<!--<head th:replace="fragments/head"></head>-->
-<head th:replace="fragments/site :: head"></head>
-```
-`index.html` also has a declaration at the bottom of the page to include the footer element.
-```html
-<footer th:replace="fragments/site :: footer"></footer>
-```
+   ```html
+   <!--<head th:replace="fragments/head"></head>-->
+   <head th:replace="fragments/site :: head"></head>
+   ```
+   `index.html` also has a declaration at the bottom of the page to include the footer element.
+   ```html
+   <footer th:replace="fragments/site :: footer"></footer>
+   ```
 
 ## Resources
 ### Standard Expressions
