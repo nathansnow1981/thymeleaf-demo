@@ -36,7 +36,32 @@
         return "/index";
     }
    ```
-
+## 1.2 - Dynamic Tables
+1. [index.html](src/main/resources/templates/index.html) shows how we can use `th:each"` to iterate through a list again, but this time the list is called "students", and contains [Student](src/main/java/com/example/thymeleaf/Student.java) objects.
+   ```html
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}" ></td>
+            <td th:text="${student.name}" ></td>
+            <td th:text="${student.email}" ></td>
+        </tr>
+    </table>
+   ```
+2. In [WebController.java](src/main/java/com/example/thymeleaf/WebController.java) we add a list of [Student](src/main/java/com/example/thymeleaf/Student.java) objects to the model.
+   ```java 
+   model.addAttribute("students", List.of(
+          new Student(1, "Tommy Tester", "t.tester@gmail.com"),
+          new Student(2, "Harry Hacker", "hackerh@gmail.com"),
+          new Student(3, "Jacky Java", "jj@gmail.com"),
+          new Student(4, "Devon Developer", "devon.d@gmail.com")
+   ));
+   ```
+   The index page will now show the following table ![student-table.png](screenshots/student-table.png)
 ## Resources
 
 ### Standard Expressions

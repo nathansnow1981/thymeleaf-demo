@@ -27,6 +27,20 @@
     </ul>
     <!--</editor-fold>-->
 
+    <!--<editor-fold desc="1.2 - Dynamic Tables">-->
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}" ></td>
+            <td th:text="${student.name}" ></td>
+            <td th:text="${student.email}" ></td>
+        </tr>
+    </table>
+    <!--</editor-fold>-->
 </body>
 
 
