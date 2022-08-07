@@ -1,5 +1,7 @@
-package com.example.thymeleaf;
+package com.example.thymeleaf.service;
 
+import com.example.thymeleaf.repository.ContactMessageRepository;
+import com.example.thymeleaf.entity.ContactMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

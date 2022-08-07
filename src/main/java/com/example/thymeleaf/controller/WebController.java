@@ -1,5 +1,8 @@
-package com.example.thymeleaf;
+package com.example.thymeleaf.controller;
 
+import com.example.thymeleaf.config.AppConfig;
+import com.example.thymeleaf.entity.ContactMessage;
+import com.example.thymeleaf.service.MessageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

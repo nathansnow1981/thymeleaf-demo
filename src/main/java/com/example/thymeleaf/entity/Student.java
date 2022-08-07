@@ -1,4 +1,4 @@
-package com.example.thymeleaf;
+package com.example.thymeleaf.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

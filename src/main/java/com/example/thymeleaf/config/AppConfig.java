@@ -1,5 +1,7 @@
-package com.example.thymeleaf;
+package com.example.thymeleaf.config;
 
+import com.example.thymeleaf.entity.ContactMessage;
+import com.example.thymeleaf.service.MessageService;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
