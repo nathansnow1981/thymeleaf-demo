@@ -5,9 +5,29 @@
     <title th:text="${siteTitle}">Title</title><!-- Inject title from the model -->
 </head>
 
+
 <body>
+    <!--<editor-fold desc="1.0 - Dynamic Content">-->
     <p>This is a normal static content</p>
     <p th:text="${dynamicContent}">We don't need any text in here</p><!-- Inject content from the model -->
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="1.1 - Dynamic Lists">-->
+    <!-- Normal unordered list -->
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ul>
+
+    <!-- Dynamic unordered list -->
+    <ul>
+        <li th:each="item : ${items}" th:text="${item}"></li>
+    </ul>
+    <!--</editor-fold>-->
+
 </body>
+
 
 </html>
