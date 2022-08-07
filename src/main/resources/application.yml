@@ -1,0 +1,9 @@
+# Common settings
+
+spring:
+
+  application:
+    name: THYMELEAF DEMO
+
+  profiles:
+    active: dev

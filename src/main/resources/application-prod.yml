@@ -1,0 +1,23 @@
+# Production profile using MySQL database
+
+spring:
+
+  profiles:
+    profile-name: PROD
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    database:
+      name: DB_NAME
+      host: DB_HOST
+      port: 3306
+    url: jdbc:mysql://${spring.datasource.database.host}:${spring.datasource.database.port}/${spring.datasource.database.name}
+    username: DB_USERNAME
+    password: DB_PASSWORD
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+hibernate:
+  format_sql: true
