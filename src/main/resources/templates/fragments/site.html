@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html th:fragment="site" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!-- Head Fragment -->
+    <!-- To call use "fragments/site :: head" -->
+    <head th:fragment="head">
+        <meta charset="UTF-8">
+        <title th:text="${siteTitle}">Title</title><!-- Inject title from the model -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" ><!-- Bootstrap -->
+        <link th:href="@{~/css/site.css}" rel="stylesheet" >
+    </head>
+
+
+    <!-- Footer fragment -->
+    <!-- To call use "fragments/site :: footer" -->
+    <footer th:fragment="footer" class="footer">
+        <p>Author: Daffy Duck</p>
+        <p><a href="mailto:daffy@example.com">daffy@example.com</a></p>
+    </footer>
+
+</html>
