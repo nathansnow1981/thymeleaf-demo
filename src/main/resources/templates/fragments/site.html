@@ -7,6 +7,7 @@
         <title th:text="| ${pageTitle} - ${siteTitle} |">Title</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" >
         <link th:href="@{~/css/site.css}" rel="stylesheet" >
+
     </head>
     <!--</editor-fold>-->
 
@@ -16,6 +17,7 @@
         <a th:class="${#strings.equalsIgnoreCase(pageTitle, 'Home')? 'nav-link active' : 'nav-link'}" th:href="@{/}">Home</a>
         <a th:class="${#strings.equalsIgnoreCase(pageTitle, 'About')? 'nav-link active' : 'nav-link'}" th:href="@{about}">About</a>
         <a th:class="${#strings.equalsIgnoreCase(pageTitle, 'Contact')? 'nav-link active' : 'nav-link'}" th:href="@{contact}">Contact</a>
+        <a th:class="${#strings.equalsIgnoreCase(pageTitle, 'File Upload')? 'nav-link active' : 'nav-link'}" th:href="@{upload}">File Upload</a>
     </nav>
     <!--</editor-fold>-->
 

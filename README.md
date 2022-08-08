@@ -148,7 +148,7 @@
 2. **Messages** table on the home page has 2 extra columns at the end of each row for `Edit` and `Delete` buttons (Edit button not yet functional)
 3. [MessageService](src/main/java/com/example/thymeleaf/MessageService.java) contains a few simple crud operations that are used by the controller and AppConfig class.
 
-## 4.0 Dynamic with filter search
+## 4.0 - Dynamic with filter search
 The [site.html](src/main/resources/templates/fragments/site.html) fragment has been updated to include a CDATA function in the page scripts. This function runs each time a `keyup` event takes place and calls the `rebuildTable()` and `filterMessages()` functions in the [messageTableFilter](src/main/resources/static/js/messageTableFilter.js) javascript file.
    ```js
    /*<![CDATA[*/
@@ -162,13 +162,10 @@ The [site.html](src/main/resources/templates/fragments/site.html) fragment has b
    ```
 As their name implies, the `filterMessages()` function filters out any messages that match the given value, and the `rebuildTable()` function rebuilds the messages table to contain only those messages returned by `filterMessages()`.
 
-## Resources
-### Standard Expressions
-```
-- ${...} : Variable expressions.
-- *{...} : Selection expressions.
-- #{...} : Message (i18n) expressions.
-- @{...} : Link (URL) expressions.
-- ~{...} : Fragment expressions.
-```
-[*Standard expression documentation*](https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html)
+## 5.0 - File upload and download
+1. [upload.html](src/main/resources/templates/upload.html) allows users to upload a selected file of any type providing it does not exceed the file size limit.
+   - Currently, the files are uploaded to a local pc directory. In production this would be assigned to a cloud server storage.
+   - A [StudentCV]() object instance is created for every uploaded file, which stores an id, the filename, and the path to its respective storage location for easy retrieval .
+   - Files that have been uploaded are shown in the table
+2. GET and POST routes for `/upload` and `/download` have been refactored into [FileController.java](src/main/java/com/example/thymeleaf/controller/FileController.java) to keep them separated from the other standard wed routes.
+___

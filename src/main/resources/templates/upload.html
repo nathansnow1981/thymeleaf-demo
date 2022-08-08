@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/site :: head"></head>
+<body>
+
+<nav th:replace="fragments/site :: nav"></nav>
+
+<div class="w-50 mx-auto pt-5">
+    <h1>File Upload</h1>
+
+    <form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+        <input type="file" name="file"/><br/><br/>
+        <input type="submit" value="Submit"/>
+    </form>
+    <small class="text-center" th:text="| Maximum file size: ${sizeLimit}|"></small>
+</div>
+
+    <h2 class="w-75 mx-auto text-center mt-5">Files</h2>
+    <table class="table table-striped table-hover w-75 mx-auto pt-5">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Filename</th>
+            <th>Location</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="fileData">
+        <tr th:each="file : ${files}">
+            <th scope="row" th:text="${file.id}">id</th>
+            <td th:text="${file.filename}"></td>
+            <td th:text="${file.filepath}"></td>
+            <td><a class="btn btn-danger" th:href="@{/download/{id}(id=${file.id})}">Download</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+<footer th:replace="fragments/site :: footer"></footer>
+<div th:replace="fragments/site :: scripts"></div>
+
+</body>
+</html>

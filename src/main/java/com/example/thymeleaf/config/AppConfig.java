@@ -19,6 +19,12 @@ public class AppConfig {
     @Value("${spring.application.display-name}")
     private String appDisplayName;
 
+    @Value("${spring.http.multipart.upload-path}")
+    private String uploadPath;
+
+    @Value("${spring.servlet.multipart.max-file-size}")
+    private String uploadSizeLimit;
+
     @Autowired
     private MessageService messageService;
 
