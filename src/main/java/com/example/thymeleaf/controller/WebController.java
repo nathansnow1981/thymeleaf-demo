@@ -21,7 +21,18 @@ public class WebController {
     @Autowired
     private MessageService messageService;
 
-    @GetMapping({"", "/", "index"})
+    /**
+     * Endpoint declaration for the view template (home page).
+     * This endpoint covers 3 mappings:
+     * <ul>
+     *      <li><a href="http://localhost:8080">http://localhost:8080</a></li>
+     *      <li><a href="http://localhost:8080/">http://localhost:8080/</a></li>
+     *      <li><a href="http://localhost:8080/index">http://localhost:8080/index</a></li>
+     *  </ul>
+     * @param model The context model for transporting data to and from the view template
+     * @return The "index.html" view template
+     */
+    @GetMapping({"", "/", "/index"})
     public String index(Model model){
         model.addAllAttributes(Map.of(
                 "siteTitle", appConfig.getAppDisplayName(),
@@ -31,6 +42,11 @@ public class WebController {
         return "/index";
     }
 
+    /**
+     * GET mapping for the "about" view template
+     * @param model The context model for transporting data to and from the view template
+     * @return The "about.html" view template
+     */
     @GetMapping("/about")
     public String about(Model model){
         model.addAllAttributes(Map.of(
@@ -40,7 +56,13 @@ public class WebController {
         return "/about";
     }
 
-    @GetMapping("/contact")//When a user visits the contact page, this is the mapping that will be called
+    /**
+     * GET mapping for the "contact" view template.
+     * This is the default mapping that is called when a user first visits the contact page
+     * @param model The context model for transporting data to and from the view template
+     * @return The "contact.html" view template
+     */
+    @GetMapping("/contact")
     public String contactForm(Model model){
         model.addAllAttributes(Map.of(
                 "siteTitle", appConfig.getAppDisplayName(),
@@ -50,6 +72,13 @@ public class WebController {
         return "/contact";
     }
 
+    /**
+     * POST mapping for the "contact" view template.
+     * This mapping is called after a user submits the contact form, accepting the posted message.
+     * @param contactMessage The newly created {@link ContactMessage} to be saved
+     * @param model The context model for transporting data to and from the view template
+     * @return A redirection to the index (home) view template
+     */
     @PostMapping("/contact")//When a user submits the contact form, this is the mapping that gets called
     public RedirectView contactSubmit(@ModelAttribute ContactMessage contactMessage, Model model){
         model.addAllAttributes(Map.of(
@@ -62,6 +91,11 @@ public class WebController {
         return new RedirectView("/");
     }
 
+    /**
+     * Deletes a {@link ContactMessage} by its id
+     * @param id The message id
+     * @return A redirection to the index (home) view template
+     */
     @GetMapping("/delete/{id}")
     public RedirectView deleteMessage(@PathVariable Long id){
         var message = messageService.deleteMessageById(id);
@@ -69,6 +103,11 @@ public class WebController {
         return new RedirectView("/");
     }
 
+    /**
+     * Edits a {@link ContactMessage} by its id
+     * @param id The message id
+     * @return A redirection to the index (home) view template
+     */
     @GetMapping("/edit/{id}")
     public RedirectView editMessage(@PathVariable Long id){
         log.info("\"Edit\" is not implemented yet :-(");

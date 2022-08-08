@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--<editor-fold desc="2.1 - Multiple fragments">-->
+
 <head th:replace="fragments/site :: head"></head>
-<!--</editor-fold>-->
 <body>
-    <!--<editor-fold desc="3.0 - Navigation">-->
-    <nav th:replace="fragments/site :: nav"></nav>
-    <!--</editor-fold>-->
 
+<nav th:replace="fragments/site :: nav"></nav>
+
+<div id="content">
     <h1 class="text-center">About Us</h1>
-
-    <!-- Placeholder text -->
     <p class="text-center w-75 mx-auto">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus cum hic officiis quos.
         Assumenda atque consequuntur culpa dolore ducimus, fugiat iure mollitia nesciunt nobis odit
@@ -29,5 +26,10 @@
         similique sit sunt temporibus unde vel vitae voluptate. Alias aperiam, delectus dignissimos eaque
         et eum inventore, itaque minima nihil numquam odit quisquam rerum sunt velit vero?
     </p>
+</div>
+
+<footer th:replace="fragments/site :: footer"></footer>
+<div th:replace="fragments/site :: scripts"></div>
+
 </body>
 </html>
