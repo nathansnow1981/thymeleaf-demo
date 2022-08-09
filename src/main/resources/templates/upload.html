@@ -34,6 +34,7 @@
             <th>Filename</th>
             <th>Location</th>
             <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody id="fileData">
@@ -41,6 +42,7 @@
             <th scope="row" th:text="${file.id}">id</th>
             <td th:text="${file.filename}"></td>
             <td th:text="${file.filepath}"></td>
+            <td><a class="btn btn-info" th:target="_blank" th:href="@{/open/{id}(id=${file.id})}">Open</a></td>
             <td><a class="btn btn-danger" th:href="@{/download/{id}(id=${file.id})}">Download</a></td>
         </tr>
         </tbody>

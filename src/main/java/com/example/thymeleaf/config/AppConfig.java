@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -24,6 +26,8 @@ public class AppConfig {
 
     @Value("${spring.servlet.multipart.max-file-size}")
     private String uploadSizeLimit;
+
+    private Map<String, String> mimeMap = new HashMap<>();
 
     @Autowired
     private MessageService messageService;
@@ -49,5 +53,24 @@ public class AppConfig {
                 new ContactMessage(14L, "lcarousd@eepurl.com", "ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum."),
                 new ContactMessage(15L, "adoe@dmoz.org", "Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis.")
         ));
+    }
+    @PostConstruct
+    public void loadMimeMap(){
+        mimeMap.putAll(Map.of(
+                "doc", "application/msword",
+                "docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "jpeg", "image/jpeg",
+                "jpg", "image/jpeg",
+                "png", "image/png",
+                "pdf", "application/pdf",
+                "txt", "text/plain",
+                "md", "text/markdown",
+                "json", "application/json",
+                "xml", "application/xml"
+        ));
+        mimeMap.putAll((Map.of(
+                "xls", "application/vnd.ms-excel",
+                "xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )));
     }
 }

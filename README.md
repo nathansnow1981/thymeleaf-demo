@@ -168,4 +168,22 @@ As their name implies, the `filterMessages()` function filters out any messages 
    - A [StudentCV]() object instance is created for every uploaded file, which stores an id, the filename, and the path to its respective storage location for easy retrieval .
    - Files that have been uploaded are shown in the table
 2. GET and POST routes for `/upload` and `/download` have been refactored into [FileController.java](src/main/java/com/example/thymeleaf/controller/FileController.java) to keep them separated from the other standard wed routes.
+## 5.1 - File open (in new tab)
+Uploaded files can be opened directly in the browser if your browser supports it, otherwise they will be downloaded.
+Known files to open in the browser:
+- .pdf
+- .txt
+- .md
+- .json
+- .xml
+- .png
+- .jpg/jpeg
+
+MS Word and Excel files will open directly into the app if installed on your machine, this applies to:
+- doc
+- docx
+- xls
+- xlsx
+
+Any other file types will be downloaded.
 ___

@@ -1,6 +1,7 @@
 package com.example.thymeleaf.controller;
 
 import com.example.thymeleaf.config.AppConfig;
+import com.example.thymeleaf.service.FileService;
 import com.example.thymeleaf.service.StudentCVService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
+import java.util.regex.Pattern;
+
 @Slf4j
 @Controller
 public class FileController {
@@ -25,7 +28,10 @@ public class FileController {
     @Autowired
     private AppConfig appConfig;
     @Autowired
-    private StudentCVService StudentCVService;
+    private StudentCVService studentCVService;
+
+    @Autowired
+    private FileService fileService;
 
     /**
      * Default endpoint for visitors to the upload page.
@@ -39,7 +45,7 @@ public class FileController {
                 "siteTitle", appConfig.getAppDisplayName(),
                 "pageTitle", "StudentCV Upload",
                 "sizeLimit", appConfig.getUploadSizeLimit(),
-                "files", StudentCVService.getAllCVs()
+                "files", studentCVService.getAllCVs()
         ));
         return "/upload";
     }
@@ -60,7 +66,7 @@ public class FileController {
             redirectAttributes.addFlashAttribute("message","Please select a file to upload");
             return "redirect:/upload";
         }
-        var savedFile = StudentCVService.uploadCV(file);
+        var savedFile = studentCVService.uploadCV(file);
         log.info(savedFile.getFilename() +" saved by client with IP = "+ request.getRemoteAddr());
         redirectAttributes.addFlashAttribute("message","You successfully uploaded " + savedFile.getFilename());
         return "redirect:/upload";
@@ -77,12 +83,22 @@ public class FileController {
      */
     @GetMapping("/download/{id}")
     public ResponseEntity<?> downloadFile(@PathVariable Long id, HttpServletRequest request) throws IOException {
-        var file = StudentCVService.getFilepathById(id);
+        var file = studentCVService.getFilepathById(id);
         log.info(file.getFilename() +" downloaded by client with IP = "+ request.getRemoteAddr());
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"".concat(file.getFilename()).concat("\""))
                 .body(Files.readAllBytes(Path.of(file.getFilepath())));
-
     }
+
+    @GetMapping("/open/{id}")
+    public ResponseEntity<?> openFile(@PathVariable Long id, HttpServletRequest request) throws IOException {
+        var file = studentCVService.getFilepathById(id);
+        log.info(file.getFilename() +" opened by client with IP = "+ request.getRemoteAddr());
+        return ResponseEntity.ok()
+                .header("Content-type", fileService.getMediaType(file.getFilename()))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"".concat(file.getFilename()).concat("\""))
+                .body(Files.readAllBytes(Path.of(file.getFilepath())));
+    }
+
 }
